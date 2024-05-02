@@ -45,4 +45,36 @@ def aloca_navios(mapa, blocos):
             navio_atual += 1
     return mapa
 
+def foi_derrotado(matriz):
+    i = 0
+    while i < len(matriz):
+        j = 0
+        while j < len(matriz[i]):
+            if matriz[i][j] == 'N':
+                return False
+            j += 1
+        i += 1
+    return True
 
+lista_paises = ['Brasil', 'França', 'Austrália', 'Rússia', 'Japão']
+computador_escolha = random.choice(lista_paises)
+print(f"Iniciando o Jogo!\n\nComputador está alocando os navios de guerra do país {computador_escolha}...\nComputador já está em posição de batalha!\n")
+print("1: Brasil\n   1 cruzador\n   2 torpedeiro\n   1 destroyer\n   1 couracado\n   1 porta-aviões\n\n2: França\n   3 cruzador\n   1 porta-aviões\n   1 destroyer\n   1 submarino\n   1 couracado\n\n3: Austrália\n   1 couracado\n   3 cruzador\n   1 submarino\n   1 porta-aviões\n   1 torpedeiro\n\n4: Rússia\n   1 cruzador\n   1 porta-aviões\n   2 couracado\n   1 destroyer\n   1 submarino\n\n5: Japão\n   2 torpedeiro\n   1 cruzador\n   2 destroyer\n   1 couracado\n   1 submarino\n")
+frota = input('Qual o número da nação da sua frota? ')
+numeros = ['1', '2', '3', '4', '5']
+while not frota in numeros:
+    print('Opção inválida')
+    frota = input('Qual o número da nação da sua frota? ')
+if frota == numeros[0]:
+    nação = 'Brasil'
+elif frota == numeros[1]:
+    nação = 'França'
+elif frota == numeros[2]:
+    nação = 'Austrália'
+elif frota == numeros[3]:
+    nação = 'Rússia'
+elif frota == numeros[4]:
+    nação = 'Japão'
+if frota in numeros:
+    print(f'Você escolheu a nação {nação}')
+    print('Agora é a sua vez de alocar seus navios de guerra!')
