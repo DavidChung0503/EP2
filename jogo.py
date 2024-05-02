@@ -158,4 +158,43 @@ for i in range(10):
 
 print ("   A  B  C  D  E  F  G  H  I  J            A  B  C  D  E  F  G  H  I  J   ")
 
+mapa_computador = cria_mapa(10)
+mapa_jogador = cria_mapa(10)
+mapa_real = cria_mapa(10)
+lista_tropas_jogador = []
+lista_blocos_tropa_jogador = []
+lista_tropas_computador = []
+lista_blocos_tropa_computador = []
 
+for tropa, qnt in PAISES[nação].items():
+    if qnt == 1:
+        lista_tropas_jogador.append(tropa)
+        lista_blocos_tropa_jogador.append(CONFIGURACAO[tropa])
+    elif qnt == 2:
+        i = 0
+        while i < 2:
+            lista_tropas_jogador.append(tropa)
+            lista_blocos_tropa_jogador.append(CONFIGURACAO[tropa])
+            i += 1
+    elif qnt == 3:
+        i = 0
+        while i < 3:
+            lista_tropas_jogador.append(tropa)
+            lista_blocos_tropa_jogador.append(CONFIGURACAO[tropa])
+            i += 1
+for tropa, qnt in PAISES[computador_escolha].items():
+    if qnt == 1:
+        lista_tropas_computador.append(tropa)
+        lista_blocos_tropa_computador.append(CONFIGURACAO[tropa])
+    elif qnt == 2:
+        i = 0
+        while i < 2:
+            lista_tropas_computador.append(tropa)
+            lista_blocos_tropa_computador.append(CONFIGURACAO[tropa])
+            i += 1
+    elif qnt == 3:
+        i = 0
+        while i < 3:
+            lista_tropas_computador.append(tropa)
+            lista_blocos_tropa_computador.append(CONFIGURACAO[tropa])
+            i += 1
