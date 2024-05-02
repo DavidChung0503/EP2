@@ -198,3 +198,62 @@ for tropa, qnt in PAISES[computador_escolha].items():
             lista_tropas_computador.append(tropa)
             lista_blocos_tropa_computador.append(CONFIGURACAO[tropa])
             i += 1
+def print_mapa(mapa_computador, mapa_jogador):
+    while True:
+        print(" COMPUTADOR                        JOGADOR")
+        print("    A    B    C    D    E    F    G    H    I    J              A    B    C    D    E    F    G    H    I    J   ")
+
+        linha = 1
+        while linha <= 10:
+            linha_computador = '  '.join('\033[41m X \033[0m' if celula == 'X' else '\033[44m   \033[0m' if celula == 'A' else '   ' for celula in mapa_computador[linha - 1])
+            linha_jogador = '  '.join('\033[41m X \033[0m' if celula == 'X' else ('\033[42m N \033[0m' if celula == 'N' else '\033[44m   \033[0m' if celula == 'A' else '   ') for celula in mapa_jogador[linha - 1])
+            numero_linha = f"{linha:2}"
+
+            print(f"{numero_linha} {linha_computador} {numero_linha}      {numero_linha} {linha_jogador} {numero_linha}")
+
+            linha += 1
+
+        print("    A    B    C    D    E    F    G    H    I    J              A    B    C    D    E    F    G    H    I    J   ")
+
+        continuar = input("Pressione Enter para continuar ou digite 'q' para sair: ")
+        if continuar.lower() == 'q':
+            break
+    return ''
+i = 0
+while i < len(lista_tropas_jogador):   
+    print(f'Alocar: {lista_tropas_jogador[0]} ({lista_blocos_tropa_jogador[0]} blocos)')
+    print(f'Proximos: {", ".join(lista_tropas_jogador)}')
+    pode = False
+    while not pode:
+        coluna = input("Informe a Letra:")
+        if coluna not in ALFABETO and coluna not in ALFABETO.lower():
+            print('Coluna Inválida! Tente Novamente')
+            continue
+        coluna_i = ALFABETO.index(coluna.upper())  
+        linha = input("Informe a Linha:")
+        if not linha.isdigit() or not (1 <= int(linha) <= 10):
+            print('Linha Inválida! Tente Novamente')
+            continue
+        linha = int(linha) - 1  
+        orientacao = input("Informe a Orientação [v|h]:")
+        if orientacao not in ['v', 'V', 'h', 'H']:
+            print('Orientação Inválida! Tente Novamente')
+            continue
+        pode = posicao_suporta(mapa_jogador, lista_blocos_tropa_jogador[0], linha, coluna_i, orientacao)
+    if orientacao == "v":
+        j = 0
+        while j < lista_blocos_tropa_jogador[0]:
+            mapa_jogador[linha+j][coluna_i] = 'N'
+            j += 1
+    elif orientacao == "h":
+        j = 0
+        while j < lista_blocos_tropa_jogador[0]:
+            mapa_jogador[linha][coluna_i+j] = 'N'
+            j += 1
+    lista_blocos_tropa_computador_trans_lista = []
+    lista_blocos_tropa_computador_trans_lista.append(lista_blocos_tropa_computador[i])
+    print(print_mapa(mapa_computador, mapa_jogador))
+    aloca_navios(mapa_real, lista_blocos_tropa_computador_trans_lista)
+    i += 1
+    lista_tropas_jogador.pop(0)
+    lista_blocos_tropa_jogador.pop(0)
