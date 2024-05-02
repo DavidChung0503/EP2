@@ -257,3 +257,15 @@ while i < len(lista_tropas_jogador):
     i += 1
     lista_tropas_jogador.pop(0)
     lista_blocos_tropa_jogador.pop(0)
+import time
+print("Iniciando a batalha naval!")
+time.sleep(1)
+print("5")
+time.sleep(1)
+print("4")
+time.sleep(1)
+print("3")
+time.sleep(1)
+print("2")
+time.sleep(1)
+print("1")
