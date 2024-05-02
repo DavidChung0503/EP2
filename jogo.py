@@ -56,6 +56,10 @@ def foi_derrotado(matriz):
         i += 1
     return True
 
+mapa_computador = cria_mapa(10)
+mapa_jogador = cria_mapa(10)
+
+
 lista_paises = ['Brasil', 'França', 'Austrália', 'Rússia', 'Japão']
 computador_escolha = random.choice(lista_paises)
 print(f"Iniciando o Jogo!\n\nComputador está alocando os navios de guerra do país {computador_escolha}...\nComputador já está em posição de batalha!\n")
@@ -76,5 +80,20 @@ elif frota == numeros[3]:
 elif frota == numeros[4]:
     nação = 'Japão'
 if frota in numeros:
+
     print(f'Você escolheu a nação {nação}')
     print('Agora é a sua vez de alocar seus navios de guerra!')
+
+print(f"  COMPUTADOR - {computador_escolha}                   JOGADOR - {nação}                  "
+"\n   A  B  C  D  E  F  G  H  I  J            A  B  C  D  E  F  G  H  I  J   ")
+
+for i in range(10):
+    linha_c = '  '.join(mapa_computador[i])
+    linha_j = '  '.join(mapa_jogador[i])
+
+    n_linha = f"{i+1:2}" 
+    print(f"{n_linha} {linha_c} {n_linha}      {n_linha} {linha_j} {n_linha}")
+
+print ("   A  B  C  D  E  F  G  H  I  J            A  B  C  D  E  F  G  H  I  J   ")
+
+
